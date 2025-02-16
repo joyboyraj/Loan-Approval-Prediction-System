@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Prediction Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        /* All CSS EXCEPT nav CSS goes here */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: #121212;
+            color: #fff;
+        }
+
+        /* Hero Section Styles */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background: url('hero_image.jpg') no-repeat center center/cover; /* Replace with your image path */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding-top: 70px;
+            box-sizing: border-box;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        .subheadline {
+            font-size: 1.5rem;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            background: #FFD700;
+            color: black;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #FFC300;
+        }
+
+        /* About, How it Works, Benefits Sections */
+        .about-section,
+        .how-it-works-section,
+        .benefits-section {
+            padding: 60px;
+            background-color: #1a1a1a;
+            text-align: center;
+            padding-top: 70px;
+            box-sizing: border-box;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 30px;
+        }
+
+        .section-content {
+            font-size: 1.1rem;
+            color: #ddd;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .step {
+            text-align: center;
+            width: 200px;
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit {
+            text-align: center;
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background-color: #121212;
+            padding: 20px;
+            text-align: center;
+            color: #ddd;
+            border-top: 1px solid #FFD700;
+        }
+
+        /* Form Styles */
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #FFD700;
+        }
+
+        form input,
+        form select {
+            width: calc(100% - 18px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #555;
+            background-color: #222;
+            color: #eee;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        form input[type="submit"] {
+            background-color: #FFD700;
+            color: black;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #FFC300;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/" class="logo">LoanPredict</a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/predict" class="active">Prediction Form</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <form method="POST" action="/predict">
+        <h1>Loan Prediction Form</h1>
+
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="employment_type">Employment Type:</label><br>
+        <select id="employment_type" name="employment_type" required>
+            <option value="Salaried">Salaried</option>
+            <option value="Self-employed">Self-employed</option>
+        </select><br><br>
+
+        <label for="loan_purpose">Loan Purpose:</label><br>
+        <select id="loan_purpose" name="loan_purpose" required>
+            <option value="Home Loan">Home Loan</option>
+            <option value="Personal Loan">Personal Loan</option>
+            <option value="Business Loan">Business Loan</option>
+            <option value="Other">Other</option>
+        </select><br><br>
+
+        <label for="cibil_score">CIBIL Score:</label><br>
+        <input type="number" id="cibil_score" name="cibil_score" required><br><br>
+
+        <label for="loan_term">Loan Term (in years):</label><br>
+        <input type="number" id="loan_term" name="loan_term" required><br><br>
+
+        <label for="loan_amount">Loan Amount:</label><br>
+        <input type="number" id="loan_amount" name="loan_amount" required><br><br>
+
+        <label for="income_annum">Annual Income:</label><br>
+        <input type="number" id="income_annum" name="income_annum" required><br><br>
+        
+        <label for="luxury_assets_value">Value of Luxury Assets:</label><br>
+        <input type="number" id="luxury_assets_value" name="luxury_assets_value" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+
+    <footer>
+        &copy; 2025 Loan Prediction. All rights reserved.
+    </footer>
+
+</body>
+
+</html>

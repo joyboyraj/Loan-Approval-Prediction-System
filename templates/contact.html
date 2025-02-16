@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Loan Approval Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1a1a1a;
+            padding: 15px 40px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            display: inline;
+        }
+
+        a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        a.active {
+            color: #FFD700;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 30px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .contact-content h2 {
+            color: #FFD700;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .contact-content p {
+            color: #ddd;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-content a {
+            color: #66fcf1;
+            font-weight: bold;
+        }
+
+        .contact-form {
+            margin-top: 30px;
+        }
+
+        .contact-form label {
+            display: block;
+            text-align: left;
+            font-size: 1rem;
+            color: #ddd;
+            margin-bottom: 5px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            background-color: #282828;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background-color: #FFD700;
+            color: black;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #FFC300;
+        }
+
+        footer {
+            background-color: #121212;
+            padding: 15px;
+            text-align: center;
+            color: #ddd;
+            font-size: 0.9rem;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="/" class="logo">LoanPredict</a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/predict">Prediction Form</a></li>
+            <li><a href="/contact" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="contact-content">
+        <h2>Contact Us</h2>
+        <p>Have any questions or feedback? We'd love to hear from you!</p>
+        <p>Email: <a href="mailto:info@loanpredict.com">info@loanpredict.com</a></p>
+        <p>Phone: +91-555-123-4567</p>
+        <p>Address: 123 Vista Corner, Maharashtra, MH 410209</p>
+        <div class="contact-form">
+            <form action="/send_message" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Loan Prediction. All rights reserved.
+    </footer>
+</body>
+
+</html>

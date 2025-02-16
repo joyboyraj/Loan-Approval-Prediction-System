@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Prediction Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        nav {
+            background-color: #121212;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #FFD700; /* Subtle gold border */
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav li {
+            margin-left: 30px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FFD700;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 30vh; /* Reduced hero height */
+            background: url('hero_image.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Slightly less dark overlay */
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px; /* Add some padding */
+        }
+
+        h1 {
+            font-size: 2.5rem; /* Slightly smaller heading */
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .result-container {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2); /* Softer shadow */
+            padding: 30px;  /* Consistent padding */
+            max-width: 600px;
+            width: 90%;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .result-container p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #eee; /* Slightly lighter text */
+        }
+
+        .result-container span {
+            font-weight: 700;
+            color: #FFD700;
+            margin-right: 10px;
+        }
+
+        .loan-status {
+            font-weight: 700;
+            color: {% if loan_status == 'Approved' %}#00FF00{% else %}#FF0000{% endif %} !important;
+        }
+
+        .disclaimer {
+            background-color: #222;
+            border-radius: 8px;
+            padding: 20px;
+            font-size: 0.95rem; /* Slightly smaller disclaimer font */
+            color: #aaa;  /* Even lighter disclaimer text */
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .back-button {
+            background-color: #FFD700;
+            color: #121212; /* Darker button text */
+            padding: 12px 25px; /* Adjusted button padding */
+            font-size: 1.1rem;
+            font-weight: 600; /* Slightly less bold button text */
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease; /* Smoother transition */
+        }
+
+        .back-button:hover {
+            background-color: #FFC300;
+        }
+
+        footer {
+            background-color: #121212;
+            padding: 20px;
+            color: #888; /* Darker footer text */
+            text-align: center;
+            border-top: 1px solid #FFD700; /* Subtle gold border */
+            font-size: 0.9rem; /* Slightly smaller footer font */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">LoanPredict</a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/predict">Prediction Form</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero-section">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>Loan Prediction Result</h1>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="result-container">
+            <p><span>Name:</span> {{ name }}</p>
+            <p><span>Age:</span> {{ age }}</p>
+            <p><span>Employment Type:</span> {{ employment_type }}</p>
+            <p><span>Loan Purpose:</span> {{ loan_purpose }}</p>
+            <p><span>Loan Status:</span> <span class="loan-status">{{ loan_status }}</span></p>
+        </div>
+
+        <div class="disclaimer">
+            Disclaimer: This prediction is based on a machine learning model and should not be considered as financial advice.
+            Loan approvals depend on multiple factors, and we recommend consulting a financial expert for precise decisions.
+        </div>
+
+        <a href="/predict" class="back-button">Go Back to Prediction Form</a>
+    </div>
+
+    <footer>
+        &copy; 2025 Loan Prediction. All rights reserved.
+    </footer>
+</body>
+</html>

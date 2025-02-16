@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Loan Approval Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background: url('{{ url_for("static", filename="hero_image.jpg") }}') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        .subheadline {
+            font-size: 1.5rem;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            background: #FFD700;
+            color: black;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #FFC300;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 40px;
+            background-color: #121212;
+            border-radius: 10px;
+            color: #ddd;
+        }
+
+        .about-content h2 {
+            color: #FFD700;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .about-content p, 
+        .faq-answer {
+            color: #ddd;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .faq-container {
+            margin-top: 30px;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            background-color: #1a1a1a;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: #ddd;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .faq-answer {
+            display: none;
+        }
+
+        .faq-question span {
+            font-size: 1.4rem;
+            transition: transform 0.3s ease;
+            color: #888;
+        }
+
+        .faq-item.active .faq-question span {
+            transform: rotate(45deg);
+            color: #ddd;
+        }
+
+        .faq-question:hover {
+            color: #fff;
+        }
+
+        footer {
+            background-color: #121212;
+            padding: 20px;
+            text-align: center;
+            color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="/" class="logo">LoanPredict</a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about" class="active">About Us</a></li>
+            <li><a href="/predict">Prediction Form</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="about-content">
+        <h2>About Us</h2>
+        <p>At LoanPredict, we are passionate about revolutionizing the loan application process. We believe that everyone deserves fair and transparent access to credit, and we're using the power of Machine Learning to make that a reality. This Loan Approval Prediction System streamlines and enhances the loan application process. Using advanced Machine Learning algorithms, the system analyzes applicant data to provide accurate predictions of loan approval or rejection, helping lenders make informed decisions and customers get quicker responses.</p>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is Loan Approval Prediction? <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    It's a web tool that uses a machine learning model to predict the likelihood of your loan application being approved, helping you assess your eligibility quickly.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How accurate is the prediction? <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Our model, a Random Forest Classifier, boasts a 98.59% accuracy rate based on extensive testing, ensuring reliable predictions.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What factors influence the prediction? <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Key factors include your CIBIL score, loan amount, loan term, income, and luxury asset value, but the model considers a comprehensive range of financial indicators.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is my data safe and private? <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes, we prioritize data privacy and security. Your information is handled securely, used solely for prediction purposes, and not shared with third parties.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I completely rely on the prediction for my loan application? <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    While our model is highly accurate, it provides a prediction, not a guarantee. The final decision on loan approval rests with the lending institution and their specific criteria. We encourage you to use this tool as an initial assessment and consult with a financial advisor for personalized guidance.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Loan Prediction. All rights reserved.
+    </footer>
+
+    <script>
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+
+</html>

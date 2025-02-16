@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        
+
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background: url('{{ url_for("static", filename="hero_image1.jpg") }}') no-repeat center center/cover; /* Replace with your hero image */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Slightly less opaque overlay */
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 40px; /* Increased padding */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        .subheadline {
+            font-size: 1.5rem; /* Added subheadline style */
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            background: #FFD700;
+            color: black;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #FFC300;
+        }
+
+        .about-section,
+        .how-it-works-section,
+        .benefits-section {
+            padding: 60px; /* Increased padding for sections */
+            background-color: #1a1a1a; /* Darker section background */
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 30px;
+        }
+
+        .section-content {
+            font-size: 1.1rem;
+            color: #ddd;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto; /* Center the content */
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .step {
+            text-align: center;
+            width: 200px; /* Adjust width as needed */
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+            gap: 30px;
+        }
+
+        .benefit {
+            text-align: center;
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background-color: #121212;
+            padding: 20px;
+            text-align: center;
+            color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/" class="logo">LoanPredict</a>
+        <ul>
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/predict">Prediction Form</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero-section">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>Unlock Your Loan Potential</h1>
+            <div class="subheadline"><strong>Instant & Accurate Approval Predictions</strong></div>
+            <div class="description"><b>Tired of waiting and wondering about your loan application? Our cutting-edge AI-powered prediction model, built on a robust Random Forest Classifier, provides instant and highly accurate insights into your loan approval chances. Make informed decisions and plan your finances with confidence.</b></div>
+            <a href="{{ url_for('predict') }}" class="cta-button">Get Your Prediction Now</a>
+        </div>
+    </div>
+
+    <div class="about-section">
+        <h2 class="section-title">The Science Behind Smart Lending</h2>
+        <div class="section-content">Our Loan Approval Prediction model utilizes a state-of-the-art Random Forest Classifier, trained on a comprehensive dataset of diverse loan applications. This advanced algorithm analyzes key financial indicators, including your CIBIL score, loan term, loan amount, income, and luxury asset value, to provide a precise prediction of your loan eligibility. Achieving an impressive 98.59% accuracy, our model offers reliable insights you can trust. We are committed to transparency and data privacy, ensuring your information is handled with the utmost care.</div>
+    </div>
+
+    <div class="how-it-works-section">
+        <h2 class="section-title">Simple Steps to Your Loan Prediction</h2>
+        <div class="section-content">
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">1</div>
+                    <p>Provide Information: Enter your basic financial details in our secure form.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">2</div>
+                    <p>Instant Analysis: Our AI model analyzes your data in real-time.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">3</div>
+                    <p>Receive Results: Get your personalized loan approval prediction and insights.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="benefits-section">
+        <h2 class="section-title">Why Choose Our Loan Prediction Tool?</h2>
+        <div class="section-content">
+            <ul class="benefits-list">
+                <li class="benefit">
+                    <div class="benefit-icon">⚡</div>
+                    <p>Instant Results: No more waiting for days or weeks. Get your prediction in seconds.</p>
+                </li>
+                <li class="benefit">
+                    <div class="benefit-icon">📊</div>
+                    <p>High Accuracy: Our 98.59% accuracy rate provides reliable insights.</p>
+                </li>
+                <li class="benefit">
+                    <div class="benefit-icon">💡</div>
+                    <p>Data-Driven Decisions: Make informed choices about your loan applications.</p>
+                </li>
+                <li class="benefit">
+                    <div class="benefit-icon">🔒</div>
+                    <p>Secure & Confidential: Your data is protected with the highest security standards.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cta-section" style="background-color: #1a1a1a; padding: 40px; text-align: center;">
+        <h2 class="section-title">Ready to Explore Your Loan Options?</h2>
+        <a href="{{ url_for('predict') }}" class="cta-button">Get Started Now</a>
+    </div>
+
+
+    <footer>
+        &copy; 2025 Loan Prediction. All rights reserved.
+    </footer>
+
+</body>
+
+</html>
